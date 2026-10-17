@@ -114,7 +114,7 @@ function VideoChapter() {
   }, [shouldPlay]);
 
   return (
-    <section ref={chapterRef} className="ht-closing" aria-labelledby="closing-title" data-chapter="video">
+    <section id="closing" tabIndex={-1} ref={chapterRef} className="ht-closing" aria-labelledby="closing-title" data-chapter="video">
       <video id="closing-video" ref={videoRef} className="ht-closing__video" poster={videoPoster}
         src={shouldLoad ? heroMedia[3].src : undefined} preload={shouldLoad ? 'metadata' : 'none'}
         muted playsInline disablePictureInPicture disableRemotePlayback tabIndex={-1} aria-hidden="true"
@@ -155,7 +155,7 @@ export function LandingHero() {
 
   return (
     <div className="ht-introduction">
-      <section className="ht-hero" aria-labelledby="ht-hero-title" data-chapter="opening">
+      <section id="top" tabIndex={-1} className="ht-hero" aria-labelledby="ht-hero-title" data-chapter="opening">
         <img className="ht-hero__image" src={heroMedia[0].src} width="5472" height="3648"
           alt="" loading="eager" fetchPriority="high" decoding="async" />
         <div className="ht-hero__veil" aria-hidden="true" />
@@ -184,7 +184,7 @@ export function LandingHero() {
         </div>
       </section>
 
-      <section className="ht-editorial ht-everyday" aria-labelledby="everyday-title" data-chapter="everyday">
+      <section id="everyday" tabIndex={-1} className="ht-editorial ht-everyday" aria-labelledby="everyday-title" data-chapter="everyday">
         <div className="ht-editorial__copy">
           <p className="ht-eyebrow">HEALTH, IN EVERYDAY LIFE</p>
           <h2 id="everyday-title">For you.<br />For the people<br />you <em>care about.</em></h2>

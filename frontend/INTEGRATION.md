@@ -1,57 +1,61 @@
-# HealthTrac landing hero
+# HealthTrac introduction prototype
 
-This is a fresh, hero-only React 19 / Vite 8 frontend, as requested after the
-existing frontend could not be accessed. It does not implement authentication,
-protected application screens, or backend changes.
+This standalone React 19 / Vite 8 UX/UI repository is separate from the production
+application. The page contains only an extended introduction: opening photograph,
+records and insights, everyday life, and a closing video chapter. It has no
+backend connections, dashboards, authentication pages, or production route guards.
+The record preview is static semantic HTML/CSS, labeled with fictional data.
 
-## Review locally
+## Run and review
 
-Use Node 20.19+ or 22.12+ (validated with Node 24). From this directory:
+Use Node 20.19+ or 22.12+ (validated with Node 24). From `frontend/`:
 
 ```sh
 npm ci
 npm run dev
+npm run lint
+npm test
 ```
 
-Open `/` on the Vite server. Build with `npm run build`, lint with
-`npm run lint`, and serve the production output with `npm run preview`.
+`npm run build` creates the production site in `dist/`; `npm run preview` serves it.
+`npm test` builds and tests the production output in Chromium. System Chromium is
+used when available (`CHROMIUM_PATH` can override it); otherwise install it with
+`npx playwright install chromium`. Screenshots are saved under ignored `artifacts/`.
 
-`npm test` builds and exercises the production output in Chromium. It uses system
-Chromium when available (`CHROMIUM_PATH` can override it); otherwise install the
-Playwright browser with `npx playwright install chromium`. Desktop, tablet and
-mobile screenshots are written to the ignored `artifacts/` directory.
+## Composition and media
 
-## Authentication integration
+- `hero_01_image.jpg`: near-viewport-height opening and an in-page Explore link.
+- `hero_02_image.jpg`: two-column records section with a fictional record preview.
+- `hero_03_image.jpg`: alternate editorial composition about personal/family records.
+- `hero_video.mp4`: its own wide closing chapter, with visible play/pause control.
 
-No registration/login destinations were supplied or available to verify. Account
-buttons are intentionally disabled until `VITE_REGISTER_URL` and `VITE_LOGIN_URL`
-are set to confirmed destinations in a local `.env.local` before starting/building.
-Do not use API endpoints as account-page links. The reusable `LandingHero`
-component also accepts `registerHref` and `loginHref` props for later integration.
+`heroMedia.js` imports the originals directly from `assets/hero/`. Vite resolves
+valid development and hashed production URLs; no original files are modified.
+`src/assets/hero_video_poster.jpg` is a still extracted from the supplied video
+at 00:05, scaled to 1600px wide. No external media is downloaded.
 
-The CSS is scoped to `ht-hero`; `index.css` provides the page background and margin.
-The serif is Georgia with system fallbacks; the sans-serif is a system stack.
-No third-party fonts, photographs, video, or other external assets are downloaded.
+There is no carousel, collage, rotation timer, or slide navigation. The video
+source is deferred until within 300px of the viewport and plays muted/inline
+only while its section is visible. It pauses outside the viewport and in hidden
+tabs, respects a manual pause, and stops at the end. Its poster appears before
+loading. Reduced motion shows the poster without fetching/autoplaying the video;
+the visitor can explicitly play it. The Explore link moves focus to the records
+section and scrolls smoothly unless reduced motion is enabled.
 
-`heroMedia.js` imports the original four assets from `../../../assets/hero/`.
-Vite transforms these imports to served development URLs and hashed build URLs.
-If the real frontend uses another root, adjust those imports or copy the original
-files into its supported public directory without modifying the originals.
+The established Georgia serif, system sans-serif, ivory/plum/lavender palette,
+rounded photographic surfaces, and deliberate mobile art direction are retained.
 
-Photographs rotate every six seconds. Video loads on first selection, plays muted
-and inline once, then returns to photograph 1. Pausing preserves the photograph's
-remaining duration and the video's playback position. Keyboard focus/interactions
-pause playback; only explicit play resumes it. Hidden tabs suspend playback.
-Reduced motion disables automatic rotation and fades; manual navigation remains
-available and the video can be explicitly played without automatic advancement.
+## Future account-link integration
 
-## GitHub Pages preview
+Account actions are absent from this design slice. When an account entry point
+is designed, supply registration/login destinations from the actual production
+application and verify their behavior there. Do not create placeholder routes,
+send visitors to API endpoints, or infer account URLs from this prototype.
+No production authentication or service behavior is represented by the record mockup.
 
-The production build uses relative asset URLs, so it also works under `/Nira/`.
-The `gh-pages` branch contains the built site. In repository **Settings → Pages**,
-choose **Deploy from a branch**, select **gh-pages** and **/ (root)**, then save.
-GitHub supplies the live URL after deployment completes. Enabling Pages requires
-repository settings access; pushing the branch alone does not enable it.
+## GitHub Pages
 
-Source changes live on `main`. A later source change needs a new `npm run build`
-and a refresh of the `gh-pages` branch; automatic deployments are not configured.
+Relative build URLs support the `/Nira/` project path. The `gh-pages` branch is
+updated manually with the reviewed production build. No automatic deployment is
+configured. To publish a reviewed build, refresh that branch with `dist/` and use repository Settings → Pages →
+Deploy from a branch → gh-pages → / (root). A branch push alone does not enable Pages.

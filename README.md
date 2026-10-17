@@ -1,5 +1,11 @@
 # HealthTrac — Longitudinal Health & Clinical Memory Platform
 
+> **This repository is a standalone UX/UI design prototype.** Its runnable
+> frontend presents a four-section HealthTrac introduction using local media and
+> fictional record data. It is separate from the production application; the
+> architecture and API material below is reference documentation, not a claim
+> that those services are implemented here. See [prototype setup and scope](frontend/INTEGRATION.md).
+
 [![Backend](https://img.shields.io/badge/Backend-Django%205.1%20%7C%20DRF-092E20?style=for-the-badge&logo=django)](https://www.djangoproject.com/)
 [![Frontend](https://img.shields.io/badge/Frontend-React%2019%20%7C%20Vite%208-61DAFB?style=for-the-badge&logo=react)](https://react.dev/)
 [![Relational DB](https://img.shields.io/badge/PostgreSQL-16+-4169E1?style=for-the-badge&logo=postgresql)](https://www.postgresql.org/)

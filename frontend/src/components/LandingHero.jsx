@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { heroMedia, videoPoster } from './heroMedia.js';
+import { SiteHeader } from './SiteHeader.jsx';
 import './LandingHero.css';
 
 const MOTION_QUERY = '(prefers-reduced-motion: reduce)';
@@ -10,18 +11,6 @@ function Arrow({ down = false }) {
       strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
       {down ? <path d="M12 4v16m-6-6 6 6 6-6" /> : <path d="M4 12h16m-6-6 6 6-6 6" />}
     </svg>
-  );
-}
-
-function Brand() {
-  return (
-    <div className="ht-hero__brand" aria-label="HealthTrac">
-      <svg width="30" height="30" viewBox="0 0 30 30" fill="none" aria-hidden="true">
-        <path d="M15 3v24M3 15h24m-20.5-8.5 17 17m-17 0 17-17" stroke="currentColor" strokeWidth="1.5" />
-        <circle cx="15" cy="15" r="4.5" fill="currentColor" />
-      </svg>
-      <span>HealthTrac</span>
-    </div>
   );
 }
 
@@ -159,7 +148,7 @@ export function LandingHero() {
         <img className="ht-hero__image" src={heroMedia[0].src} width="5472" height="3648"
           alt="" loading="eager" fetchPriority="high" decoding="async" />
         <div className="ht-hero__veil" aria-hidden="true" />
-        <Brand />
+        <SiteHeader overlay />
         <div className="ht-hero__content">
           <h1 id="ht-hero-title">Your health history,<br className="ht-hero__desktop-break" />{' '}
             <em>beautifully connected.</em></h1>

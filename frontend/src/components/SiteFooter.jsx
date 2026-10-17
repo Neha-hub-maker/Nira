@@ -1,4 +1,5 @@
 import './SiteFooter.css';
+import { followSection } from './sectionNavigation.js';
 
 const sections = [
   { href: '#top', label: 'Your health history' },
@@ -7,20 +8,15 @@ const sections = [
   { href: '#closing', label: 'The story continues' },
 ];
 
-function followSection(event) {
-  if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
-  const target = document.getElementById(event.currentTarget.hash.slice(1));
-  if (!target) return;
-  event.preventDefault();
-  target.focus({ preventScroll: true });
-  target.scrollIntoView({
-    behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth',
-    block: 'start',
-  });
-  window.history.replaceState(null, '', event.currentTarget.hash);
-}
+const consultationSections = [
+  { href: './', label: 'Home' },
+  { href: '#top', label: 'Prepare for your consultation' },
+  { href: '#preparation', label: 'Preparation checklist' },
+  { href: '#sharing-preview', label: 'Sharing preview' },
+  { href: '#consultation-video', label: 'A clearer conversation' },
+];
 
-export function SiteFooter() {
+export function SiteFooter({ page = 'home' }) {
   const year = new Date().getFullYear();
 
   return (
@@ -41,7 +37,7 @@ export function SiteFooter() {
           <nav className="ht-footer__explore" aria-labelledby="footer-explore-title">
             <h2 id="footer-explore-title">Explore</h2>
             <ul>
-              {sections.map(({ href, label }) => (
+              {(page === 'consultation' ? consultationSections : sections).map(({ href, label }) => (
                 <li key={href}><a href={href} onClick={followSection}>{label}</a></li>
               ))}
             </ul>

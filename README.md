@@ -1,8 +1,8 @@
 # HealthTrac — Longitudinal Health & Clinical Memory Platform
 
 > **This repository is a standalone UX/UI design prototype.** Its runnable
-> frontend presents a four-section HealthTrac introduction using local media and
-> fictional record data. It is separate from the production application; the
+> frontend presents a four-section HealthTrac introduction and a separate
+> consultation-preparation page with local media and fictional sharing previews. It is separate from the production application; the
 > architecture and API material below is reference documentation, not a claim
 > that those services are implemented here. See [prototype setup and scope](frontend/INTEGRATION.md).
 

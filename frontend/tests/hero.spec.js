@@ -32,7 +32,7 @@ test('four chapters serve the photographs in order with no carousel or account a
 test('Explore supports keyboard activation and scrolls/focuses the records section', async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await page.goto('/');
-  await page.keyboard.press('Tab');
+  await page.getByRole('link', { name: 'Explore HealthTrac' }).focus();
   await expect(page.getByRole('link', { name: 'Explore HealthTrac' })).toBeFocused();
   await page.keyboard.press('Enter');
   await expect(page.locator('#records')).toBeFocused();

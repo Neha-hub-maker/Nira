@@ -1,0 +1,15 @@
+/* Page-level canvas for the fresh, hero-only frontend. */
+body {
+  margin: 0;
+  background: #f3efe9;
+}
+
+main {
+  padding: 24px;
+}
+
+@media (max-width: 700px) {
+  main {
+    padding: 12px;
+  }
+}

@@ -71,6 +71,43 @@ Names and records are fictional; durations are illustrative. No tokens, grants,
 QR codes, authentication, persistence, API requests, or actual sharing are created.
 Doctor sign-in is explained as a product requirement, never simulated as real access.
 
+## Patient dashboard preview
+
+Open `/dashboard.html` directly for the patient overview. This is an additional
+Vite multi-page entry; the public home and consultation pages retain their routes
+and behavior. The actual project uses React and custom CSS; React Router and
+Bootstrap are not installed, and no new dependencies are required for this slice.
+
+Reusable presentation components live in `src/patient/`: `AppShell` owns the
+responsive patient navigation and header; `Panel`, `RecentRecords`, `CareJourneys`,
+and `LatestReadings` accept presentation data and states. Styles are scoped with
+`pt-` classes and reuse the public site's Georgia/Helvetica typography and colors.
+The shell accepts a destination map, active destination, page title, main target
+and patient identity so verified application routes can be supplied later.
+
+All patient information comes from isolated, clearly labeled fictional fixtures
+in `demoData.js`. This entry makes no API calls, uses no authentication or storage,
+and must not merge fixtures into real patient data. The preview selector exposes
+sample, empty, loading and locked presentation states. Locked state removes
+medical details from the rendered DOM; this is a visual preview, not an access
+control implementation. Production must supply already authorized data and honor
+the existing vault state before rendering these components.
+
+Navigation for Medical Records, Health History and Results & Trends focuses the
+corresponding overview sections. No production patient routes were found in this
+checkout. Upload, secure sharing, profile/plan and vault-unlock actions show
+explicit integration dependency dialogs. Record actions open fictional metadata
+only; no source documents are available. The sharing dialog links to the existing
+consultation demo, explicitly labeled fictional. There are no invented login,
+billing, upload or access-grant workflows. Production integration needs the
+verified authenticated route map, authorized data access and existing flows.
+No backend, permission, security or business-rule behavior is changed.
+
+`npm test` includes dashboard coverage for dates, reference labels, state changes,
+honest actions, focus restoration, mobile navigation and responsive overflow.
+Dashboard screenshots are written to ignored `artifacts/dashboard-*.png` at
+1440, 834, 390 and 320 pixels wide.
+
 ## Future account-link integration
 
 Account actions are absent from this design slice. When an account entry point

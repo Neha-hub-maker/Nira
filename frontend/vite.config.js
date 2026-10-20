@@ -11,6 +11,7 @@ export default defineConfig({
       input: {
         home: fileURLToPath(new URL('./index.html', import.meta.url)),
         consultation: fileURLToPath(new URL('./consultation.html', import.meta.url)),
+        dashboard: fileURLToPath(new URL('./dashboard.html', import.meta.url)),
       },
     },
   },

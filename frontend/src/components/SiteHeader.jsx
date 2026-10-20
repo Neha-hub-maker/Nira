@@ -16,6 +16,7 @@ export function SiteHeader({ page = 'home', overlay = false }) {
           <span className="ht-site-header__long-label">Prepare for your consultation</span>
           <span className="ht-site-header__short-label">Consultation</span>
         </a>
+        <a href="./dashboard.html">Dashboard preview</a>
       </nav>
     </header>
   );

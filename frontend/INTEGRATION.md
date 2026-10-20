@@ -75,7 +75,8 @@ Doctor sign-in is explained as a product requirement, never simulated as real ac
 
 Open `/dashboard.html` directly for the patient overview. This is an additional
 Vite multi-page entry; the public home and consultation pages retain their routes
-and behavior. The actual project uses React and custom CSS; React Router and
+and behavior. Both public pages also offer a “Dashboard preview” link in their
+shared primary navigation. The actual project uses React and custom CSS; React Router and
 Bootstrap are not installed, and no new dependencies are required for this slice.
 
 Reusable presentation components live in `src/patient/`: `AppShell` owns the
